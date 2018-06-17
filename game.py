@@ -1,6 +1,6 @@
-from strikeball import StrikeBall
+from up_down import UpDown
 
-sb = StrikeBall()
+ud=UpDown()
 
 def new_game(d):
 	try:
@@ -8,18 +8,17 @@ def new_game(d):
 	except:
 		return {'code': 'error', 'msg': 'count not given'}
 
-	sb.newGame(count)
+	ud.newGame(count)
 
 	return {'code': 'success'}
 
 
-def guess(d):
+def updown(d):
 	try:
-		guess = d.get('guess', [''])[0]
+		updown = int(d.get('updown', [''])[0])
 	except:
 		return {'code': 'error', 'msg': 'wrong guess parameter'}
 
-	strikes, balls = sb.guess(guess)
-	trials = sb.getGuessCount()
+	answer = ud. updown(updown)
 
-	return {'code': 'success', 'strikes': strikes, 'balls': balls, 'trials': trials}
+	return {'code': 'success', 'answer': answer, 'trials': trials}

@@ -1,6 +1,6 @@
 from cgi import parse_qs
 import json
-from game import new_game, guess
+from game import new_game, updown
 
 
 def application(environ, start_response):
@@ -35,7 +35,7 @@ def application(environ, start_response):
 		if method == 'new':
 			response = new_game(d)
 		elif method == 'guess':
-			response = guess(d)
+			response = updown(d)
 		else:
 			response = {'code': 'error', 'msg': 'non-existent API method'}
 
